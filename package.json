@@ -1,0 +1,45 @@
+{
+  "name": "gestor-odonto",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail --prefix \"[{name}]\" --names \"FRONT,BACK\" --prefix-colors \"cyan.bold,green.bold\" \"npm run frontend\" \"npm run backend\"",
+    "frontend": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "backend": "cd backend && npm run dev",
+    "install:all": "npm install && cd backend && npm install",
+    "setup": "npm run install:all && cd backend && npx prisma generate",
+    "clean": "rimraf .next && rimraf node_modules/.cache"
+  },
+  "dependencies": {
+    "@radix-ui/react-alert-dialog": "^1.1.6",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-slot": "^1.1.2",
+    "@types/node": "^20",
+    "autoprefixer": "^10.0.1",
+    "axios": "^1.7.9",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cors": "^2.8.5",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "js-cookie": "^3.0.5",
+    "lucide-react": "^0.323.0",
+    "next": "14.1.0",
+    "postcss": "^8",
+    "react": "^18",
+    "react-dom": "^18",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "concurrently": "^8.2.2",
+    "rimraf": "^5.0.5"
+  }
+}
