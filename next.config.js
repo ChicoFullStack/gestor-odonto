@@ -1,35 +1,34 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    instrumentationHook: false // Desabilita o trace
-  },
-  // Configurações adicionais
+  output: 'standalone',
   reactStrictMode: true,
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '3333',
-        pathname: '/uploads/**',
-      },
-      {
-        protocol: 'http',
-        hostname: '147.93.113.243',
-        port: '5432',
+        protocol: 'https',
+        hostname: 'backodonto.boloko.cloud',
         pathname: '/uploads/**',
       }
     ],
-    unoptimized: true,
-    domains: ['localhost'], // Adicione outros domínios conforme necessário
+    unoptimized: true
   },
-  // Otimizações
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+  },
   poweredByHeader: false,
   compress: true,
-  // Configuração de ambiente
-  env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL
+  swcMinify: true,
+  experimental: {
+    instrumentationHook: false
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`,
+      },
+    ]
   }
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
