@@ -380,6 +380,7 @@ export default function Agendamentos() {
         isOpen={modalCancelarOpen}
         onClose={() => setModalCancelarOpen(false)}
         onConfirm={handleConfirmCancelar}
+        agendamentoId={selectedAgendamentoId || ''}
       />
 
       <ExcluirAgendamentoModal
@@ -387,6 +388,7 @@ export default function Agendamentos() {
         onClose={() => setModalExcluirOpen(false)}
         onConfirm={handleConfirmExcluir}
         isDeleting={isDeleting}
+        agendamentoId={selectedAgendamentoId || ''}
       />
     </div>
   )

@@ -3,7 +3,7 @@ import { X } from 'lucide-react'
 interface CancelarAgendamentoModalProps {
   isOpen: boolean
   onClose: () => void
-  onConfirm: () => void
+  onConfirm: () => Promise<void>
   agendamentoId: string
 }
 
