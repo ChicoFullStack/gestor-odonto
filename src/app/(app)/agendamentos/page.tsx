@@ -94,11 +94,7 @@ export default function Agendamentos() {
         if (profissionalId) queryParams.append('profissionalId', profissionalId)
         if (dataFiltro) queryParams.append('data', dataFiltro)
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/agendamentos?${queryParams}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        })
+        const response = await api.get(`/agendamentos?${queryParams}`)
 
         if (!response.ok) throw new Error('Erro ao carregar agendamentos')
 

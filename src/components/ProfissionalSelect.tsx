@@ -22,7 +22,7 @@ export function ProfissionalSelect({ value, onChange, className }: ProfissionalS
     async function loadProfissionais() {
       try {
         const response = await api.get('/profissionais')
-        setProfissionais(response.data.profissionais)
+        setProfissionais(response.data.profissionais || [])
       } catch (error) {
         console.error('Erro ao carregar profissionais:', error)
       } finally {
