@@ -45,7 +45,7 @@ const profissionalSchema = z.object({
   email: z.string().email(),
   telefone: z.string(),
   cro: z.string(),
-  especialidade: z.string(),
+  especialidade: z.nativeEnum(Especialidade),
   dataNascimento: z.string().transform(str => new Date(str)),
   cpf: z.string().regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/),
   rg: z.string().optional().nullable(),
