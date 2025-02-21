@@ -6,8 +6,8 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 COPY next.config.js ./
 
-# Instala as dependências
-RUN npm install --frozen-lockfile --legacy-peer-deps
+# Instala as dependências ignorando os warnings
+RUN npm install --frozen-lockfile --legacy-peer-deps --no-warnings
 
 # Stage 2: Build
 FROM node:18.19-alpine AS builder
