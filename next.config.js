@@ -21,6 +21,7 @@ const nextConfig = {
   experimental: {
     instrumentationHook: false
   },
+  telemetry: false,
   async rewrites() {
     return [
       {
