@@ -45,7 +45,7 @@ export default function Profissionais() {
         }
 
         const response = await api.get(`/profissionais?${queryParams}`)
-        setProfissionais(response.data.profissionais)
+          setProfissionais(response.data.profissionais)
         setTotalPaginas(response.data.pages)
       } catch (error) {
         console.error('Erro ao carregar profissionais:', error)
@@ -200,7 +200,7 @@ export default function Profissionais() {
                       className="text-gray-600 hover:text-gray-900"
                     >
                       Ver detalhes
-                    </Link>
+          </Link>
                   </td>
                 </tr>
               ))
@@ -213,21 +213,21 @@ export default function Profissionais() {
       {!isLoading && totalPaginas > 1 && (
         <div className="flex items-center justify-between bg-white px-4 py-3 border rounded-lg">
           <div className="flex-1 flex justify-between sm:hidden">
-            <button
-              onClick={() => setPagina(p => Math.max(1, p - 1))}
-              disabled={pagina === 1}
+          <button
+            onClick={() => setPagina(p => Math.max(1, p - 1))}
+            disabled={pagina === 1}
               className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50"
-            >
-              Anterior
-            </button>
-            <button
-              onClick={() => setPagina(p => Math.min(totalPaginas, p + 1))}
-              disabled={pagina === totalPaginas}
+          >
+            Anterior
+          </button>
+          <button
+            onClick={() => setPagina(p => Math.min(totalPaginas, p + 1))}
+            disabled={pagina === totalPaginas}
               className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50"
-            >
-              Próximo
-            </button>
-          </div>
+          >
+            Próximo
+          </button>
+        </div>
           <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
               <p className="text-sm text-gray-700">
