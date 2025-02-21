@@ -95,12 +95,8 @@ export default function Agendamentos() {
         if (dataFiltro) queryParams.append('data', dataFiltro)
 
         const response = await api.get(`/agendamentos?${queryParams}`)
-
-        if (!response.ok) throw new Error('Erro ao carregar agendamentos')
-
-        const data = await response.json()
-        setAgendamentos(data.agendamentos)
-        setTotalPaginas(data.pages)
+        setAgendamentos(response.data.agendamentos)
+        setTotalPaginas(response.data.pages)
       } catch (error) {
         console.error('Erro ao carregar agendamentos:', error)
         setError('Ocorreu um erro ao carregar os agendamentos')
@@ -121,22 +117,9 @@ export default function Agendamentos() {
     if (!selectedAgendamentoId) return
 
     try {
-      const token = Cookies.get('token')
-      if (!token) return
-
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/agendamentos/${selectedAgendamentoId}/status`,
-        {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify({ status: 'cancelado' })
-        }
-      )
-
-      if (!response.ok) throw new Error('Erro ao cancelar agendamento')
+      await api.patch(`/agendamentos/${selectedAgendamentoId}/status`, {
+        status: 'cancelado'
+      })
 
       // Atualizar a lista de agendamentos
       setAgendamentos(prev => 
